@@ -136,7 +136,6 @@ const Home = ({navigation}) => {
           />
         </View>
         <Text
-        
           style={{
             fontSize: 12,
             color: COLOURS.black,
@@ -145,7 +144,7 @@ const Home = ({navigation}) => {
           }}>
           {data.productName}
         </Text>
-        {data.category == 'accessory' ? (
+        {data.category === 'accessory' ? (
           data.isAvailable ? (
             <View
               style={{
