@@ -265,7 +265,7 @@ const Home = ({navigation}) => {
           <Text
           //This section creates a container with title and description texts.
           //Text components contain title and description texts. The style and appearance of the texts are specified.
-          
+
             style={{
               fontSize: 14,
               color: COLOURS.black,
@@ -275,9 +275,14 @@ const Home = ({navigation}) => {
             }}>
             
             {'\n'}This shop offers both products and services
+
+            
           </Text>
         </View>
         <View
+        //This section constitutes the section where the products are listed.
+        //The nested View components create a container with the title and number of products.
+        //The first nested View component contains the title and the product count. The style and appearance of the texts are specified.
           style={{
             padding: 16,
           }}>
@@ -322,6 +327,8 @@ const Home = ({navigation}) => {
             </Text>
           </View>
           <View
+          //The second nested View component is the container where the product cards are listed. 
+          //Creates a ProductCard component for each product card by mapping the products array.
             style={{
               flexDirection: 'row',
               flexWrap: 'wrap',
@@ -332,8 +339,9 @@ const Home = ({navigation}) => {
             })}
           </View>
         </View>
-
         <View
+        //This section constitutes the part where the accessories are listed.
+        //Nested View components create a container containing the number of titles and accessories.
           style={{
             padding: 16,
           }}>
@@ -358,6 +366,8 @@ const Home = ({navigation}) => {
                 Accessories
               </Text>
               <Text
+              //The first nested View component contains the header and the number of accessories. 
+              //The style and appearance of the texts are specified.
                 style={{
                   fontSize: 14,
                   color: COLOURS.black,
@@ -385,6 +395,8 @@ const Home = ({navigation}) => {
             }}>
             {accessory.map(data => {
               return <ProductCard data={data} key={data.id} />;
+              //The second nested View component is the container where the accessory cards are listed. 
+              //Creates a ProductCard component for each accessory card by mapping the accessory array.
             })}
           </View>
         </View>
