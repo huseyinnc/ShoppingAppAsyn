@@ -1,3 +1,8 @@
+/*
+First, the required React and React Native components are imported from the react, react-native modules. 
+COLOURS and Items variables are also imported from the ../database/Database module.
+Also, some icon components are imported from react-native-vector-icons module.
+*/
 import React, {useState, useEffect} from 'react';
 import {
   View,
@@ -12,11 +17,17 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
+//A functional component named Home is defined. The component takes the navigation parameter.
 const Home = ({navigation}) => {
   const [products, setProducts] = useState([]);
   const [accessory, setAccessory] = useState([]);
+//Using the useState hook, two state variables products and accessory are created. Initial values ​​are assigned as an empty array ([]).
+
 
   //get called on screen loads
+
+  //Using the useEffect hook, the getDataFromDB function is called when the component is loaded and refocused. 
+  //By adding navigation dependency, useEffect works only when navigation changes and listener is removed.
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       getDataFromDB();
@@ -27,6 +38,10 @@ const Home = ({navigation}) => {
 
   //get data from DB
 
+  //A function called getDataFromDB is defined. 
+  //This function takes data from the Items array and creates two empty arrays productList and accessoryList. 
+  //It then loops through the Items array and adds products by category to the corresponding list. 
+  //Finally, state variables are updated using the setProducts and setAccessory functions.
   const getDataFromDB = () => {
     let productList = [];
     let accessoryList = [];
@@ -44,8 +59,13 @@ const Home = ({navigation}) => {
 
   //create an product reusable card
 
+  //The ProductCard component starts with a TouchableOpacity component. 
+  //This is a touch feedback component that allows the user to click the card. 
+  //When the click event occurs, the navigation.navigate method is called to switch to the ProductInfo screen and 
+  //the productID parameter and the ID of the selected product are transmitted.
   const ProductCard = ({data}) => {
     return (
+      //The TouchableOpacity component is used with a style object and properties such as width (width) and vertical margin (marginVertical) are set.
       <TouchableOpacity
         onPress={() => navigation.navigate('ProductInfo', {productID: data.id})}
         style={{
@@ -53,6 +73,12 @@ const Home = ({navigation}) => {
           marginVertical: 14,
         }}>
         <View
+        //A View component is used to show the contents of the card. This component is structured to include an image and texts.
+        /*
+        Content View's style properties are set: width (width), height (height),
+        corner roundness (borderRadius), backgroundColor, position (position), 
+        to align content horizontally and vertically (justifyContent, alignItems), bottom space (marginBottom) etc.
+        */
           style={{
             width: '100%',
             height: 100,
@@ -64,6 +90,8 @@ const Home = ({navigation}) => {
             marginBottom: 8,
           }}>
           {data.isOff ? (
+            //If there is a discount (isOff) on the card, a box is created using a View component showing the discount percentage. 
+            //This box contains a text component that contains the discount percentage.
             <View
               style={{
                 position: 'absolute',
@@ -89,6 +117,8 @@ const Home = ({navigation}) => {
             </View>
           ) : null}
           <Image
+          //The card contains an image component. This component displays an image from data.productImage. 
+          //The size of the image is resized by 80% (resizeMode).
             source={data.productImage}
             style={{
               width: '80%',
@@ -98,6 +128,10 @@ const Home = ({navigation}) => {
           />
         </View>
         <Text
+        /*
+        Using Text components, product name (data.productName), product category (data.category), 
+        product availability (data.isAvailable) and product price (data.productPrice) are displayed.
+        */
           style={{
             fontSize: 12,
             color: COLOURS.black,
@@ -158,8 +192,17 @@ const Home = ({navigation}) => {
     );
   };
 
+  //The component is finally returned in the TouchableOpacity component.
+
   return (
     <View
+    //The View component creates the parent component and occupies the full screen size. The background color is set to COLOURS.white.
+
+    //The StatusBar component sets the style and background color of the application status bar. 
+    //The background color is set to COLOURS.white and the text color to dark-content.
+
+    //The ScrollView component provides vertical scrolling. 
+    //The showsVerticalScrollIndicator property controls the visibility of the vertical scroll bar.
       style={{
         width: '100%',
         height: '100%',
@@ -168,6 +211,7 @@ const Home = ({navigation}) => {
       <StatusBar backgroundColor={COLOURS.white} barStyle="dark-content" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View
+        //The View component creates a container around the icons. flexDirection: The 'row' property aligns the contents horizontally.
           style={{
             width: '100%',
             flexDirection: 'row',
@@ -176,6 +220,7 @@ const Home = ({navigation}) => {
           }}>
           <TouchableOpacity>
             <Entypo
+            //The first TouchableOpacity component contains the "shopping-bag" icon. The style and appearance of the icon are specified.
               name="shopping-bag"
               style={{
                 fontSize: 18,
@@ -184,6 +229,8 @@ const Home = ({navigation}) => {
                 borderRadius: 10,
                 backgroundColor: COLOURS.backgroundLight,
               }}
+              //The second TouchableOpacity component contains the "cart" icon. 
+              //The style and appearance of the icon are specified. It also redirects to the MyCart page when the icon is clicked.
             />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('MyCart')}>
@@ -216,6 +263,9 @@ const Home = ({navigation}) => {
             Shopping &amp; Service
           </Text>
           <Text
+          //This section creates a container with title and description texts.
+          //Text components contain title and description texts. The style and appearance of the texts are specified.
+          
             style={{
               fontSize: 14,
               color: COLOURS.black,
