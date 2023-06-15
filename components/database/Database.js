@@ -23,6 +23,20 @@ export const COLOURS = {
   These COLOURS and Items constants are often used to define the style and data sources of components. 
   For example, in a component where products and accessories are listed, 
   you can fill in the data using the Items array and colorize the interface with the COLOURS object.
+
+
+  Each item contains the following keys:
+    id: The unique ID of the item.
+    category: The item's category can be "product" or "accessory".
+    productName: The name of the product or accessory.
+    productPrice: The price of the product or accessory.
+    description: Description of the product or accessory.
+    isOff: Is there a discount on the product or accessory? Boolean value.
+    offPercentage: Discount percentage. Valid when isOff is true.
+    productImage: A value that represents the file path of the product or accessory's image.
+    isAvailable: Is the product or accessory available? Boolean value.
+    productImageList: An array containing the file path of other images of the product or accessory.
+
   */
   
   export const Items = [
