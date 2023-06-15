@@ -8,6 +8,22 @@ export const COLOURS = {
     backgroundMedium: '#B9B9B9',
     backgroundDark: '#777777',
   };
+
+  /*
+  This code contains two exported fixed objects named COLOURS and Items.
+  The COLOURS object contains key-value pairs containing different color values. 
+  These color values ​​can be used and customized in different components of the interface.
+
+
+
+  The Items array contains a list of items with information about the product and accessories. 
+  Each item is an object that represents certain features and characteristics of a product or accessory.
+
+
+  These COLOURS and Items constants are often used to define the style and data sources of components. 
+  For example, in a component where products and accessories are listed, 
+  you can fill in the data using the Items array and colorize the interface with the COLOURS object.
+  */
   
   export const Items = [
     {
