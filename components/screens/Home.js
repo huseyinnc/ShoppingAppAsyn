@@ -66,6 +66,14 @@ const Home = ({navigation}) => {
   const ProductCard = ({data}) => {
     return (
       //The TouchableOpacity component is used with a style object and properties such as width (width) and vertical margin (marginVertical) are set.
+      
+      //A View component is used to show the contents of the card. This component is structured to include an image and texts.
+        
+      /*
+        Content View's style properties are set: width (width), height (height),
+        corner roundness (borderRadius), backgroundColor, position (position), 
+        to align content horizontally and vertically (justifyContent, alignItems), bottom space (marginBottom) etc.
+        */
       <TouchableOpacity
         onPress={() => navigation.navigate('ProductInfo', {productID: data.id})}
         style={{
@@ -73,12 +81,6 @@ const Home = ({navigation}) => {
           marginVertical: 14,
         }}>
         <View
-        //A View component is used to show the contents of the card. This component is structured to include an image and texts.
-        /*
-        Content View's style properties are set: width (width), height (height),
-        corner roundness (borderRadius), backgroundColor, position (position), 
-        to align content horizontally and vertically (justifyContent, alignItems), bottom space (marginBottom) etc.
-        */
           style={{
             width: '100%',
             height: 100,
@@ -117,21 +119,24 @@ const Home = ({navigation}) => {
             </View>
           ) : null}
           <Image
-          //The card contains an image component. This component displays an image from data.productImage. 
-          //The size of the image is resized by 80% (resizeMode).
             source={data.productImage}
             style={{
               width: '80%',
               height: '80%',
               resizeMode: 'contain',
             }}
-          />
-        </View>
-        <Text
-        /*
+             //The card contains an image component. This component displays an image from data.productImage. 
+            //The size of the image is resized by 80% (resizeMode).
+          
+
+            /*
         Using Text components, product name (data.productName), product category (data.category), 
         product availability (data.isAvailable) and product price (data.productPrice) are displayed.
         */
+          />
+        </View>
+        <Text
+        
           style={{
             fontSize: 12,
             color: COLOURS.black,
@@ -194,15 +199,18 @@ const Home = ({navigation}) => {
 
   //The component is finally returned in the TouchableOpacity component.
 
-  return (
-    <View
-    //The View component creates the parent component and occupies the full screen size. The background color is set to COLOURS.white.
+  //The View component creates the parent component and occupies the full screen size. The background color is set to COLOURS.white.
 
     //The StatusBar component sets the style and background color of the application status bar. 
     //The background color is set to COLOURS.white and the text color to dark-content.
 
     //The ScrollView component provides vertical scrolling. 
     //The showsVerticalScrollIndicator property controls the visibility of the vertical scroll bar.
+
+    //The View component creates a container around the icons. flexDirection: The 'row' property aligns the contents horizontally.
+
+  return (
+    <View
       style={{
         width: '100%',
         height: '100%',
@@ -211,16 +219,14 @@ const Home = ({navigation}) => {
       <StatusBar backgroundColor={COLOURS.white} barStyle="dark-content" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View
-        //The View component creates a container around the icons. flexDirection: The 'row' property aligns the contents horizontally.
           style={{
             width: '100%',
             flexDirection: 'row',
             justifyContent: 'space-between',
             padding: 16,
           }}>
-          <TouchableOpacity>
-            <Entypo
-            //The first TouchableOpacity component contains the "shopping-bag" icon. The style and appearance of the icon are specified.
+          <TouchableOpacity>           
+            <Entypo                    //The first TouchableOpacity component contains the "shopping-bag" icon. The style and appearance of the icon are specified.
               name="shopping-bag"
               style={{
                 fontSize: 18,
@@ -228,14 +234,12 @@ const Home = ({navigation}) => {
                 padding: 12,
                 borderRadius: 10,
                 backgroundColor: COLOURS.backgroundLight,
-              }}
-              //The second TouchableOpacity component contains the "cart" icon. 
-              //The style and appearance of the icon are specified. It also redirects to the MyCart page when the icon is clicked.
+              }}      
             />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('MyCart')}>
-            <MaterialCommunityIcons
-              name="cart"
+          <TouchableOpacity onPress={() => navigation.navigate('MyCart')}>      
+            <MaterialCommunityIcons                    //The style and appearance of the icon are specified. It also redirects to the MyCart page when the icon is clicked. 
+              name="cart"                             //The second TouchableOpacity component contains the "cart" icon.
               style={{
                 fontSize: 18,
                 color: COLOURS.backgroundMedium,
@@ -263,9 +267,6 @@ const Home = ({navigation}) => {
             Shopping &amp; Service
           </Text>
           <Text
-          //This section creates a container with title and description texts.
-          //Text components contain title and description texts. The style and appearance of the texts are specified.
-
             style={{
               fontSize: 14,
               color: COLOURS.black,
@@ -275,24 +276,21 @@ const Home = ({navigation}) => {
             }}>
             
             {'\n'}This shop offers both products and services
-
+          
             
           </Text>
         </View>
-        <View
-        //This section constitutes the section where the products are listed.
-        //The nested View components create a container with the title and number of products.
-        //The first nested View component contains the title and the product count. The style and appearance of the texts are specified.
+        <View                         //This section constitutes the section where the products are listed.
           style={{
             padding: 16,
           }}>
-          <View
+          <View                   //The nested View components create a container with the title and number of products.
             style={{
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'space-between',
             }}>
-            <View
+            <View                      //The first nested View component contains the title and the product count. The style and appearance of the texts are specified.
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
@@ -326,26 +324,22 @@ const Home = ({navigation}) => {
               See All
             </Text>
           </View>
-          <View
-          //The second nested View component is the container where the product cards are listed. 
-          //Creates a ProductCard component for each product card by mapping the products array.
+          <View                      //The second nested View component is the container where the product cards are listed. 
             style={{
               flexDirection: 'row',
               flexWrap: 'wrap',
               justifyContent: 'space-around',
             }}>
-            {products.map(data => {
+            {products.map(data => {                       //Creates a ProductCard component for each product card by mapping the products array.
               return <ProductCard data={data} key={data.id} />;
             })}
           </View>
         </View>
         <View
-        //This section constitutes the part where the accessories are listed.
-        //Nested View components create a container containing the number of titles and accessories.
-          style={{
-            padding: 16,
+          style={{                    //This section constitutes the part where the accessories are listed.
+            padding: 16,                
           }}>
-          <View
+          <View                         //Nested View components create a container containing the number of titles and accessories
             style={{
               flexDirection: 'row',
               alignItems: 'center',
@@ -366,8 +360,6 @@ const Home = ({navigation}) => {
                 Accessories
               </Text>
               <Text
-              //The first nested View component contains the header and the number of accessories. 
-              //The style and appearance of the texts are specified.
                 style={{
                   fontSize: 14,
                   color: COLOURS.black,

@@ -37,6 +37,11 @@ export const COLOURS = {
     isAvailable: Is the product or accessory available? Boolean value.
     productImageList: An array containing the file path of other images of the product or accessory.
 
+    
+    
+    Finally, the product's price and tax information are displayed. 
+    The price is represented by the symbol and quantity information within a <Text> component. 
+    Tax information is calculated on the price and displayed with a separate <Text> component.
   */
   
   export const Items = [

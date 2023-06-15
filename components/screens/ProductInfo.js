@@ -145,16 +145,14 @@ const ProductInfo = ({route, navigation}) => {
         backgroundColor: COLOURS.white,
         position: 'relative',
       }}>
-
-      //StatusBar settings are made.
       <StatusBar
+      //StatusBar settings are made.
         backgroundColor={COLOURS.backgroundLight}
         barStyle="dark-content"
-      />
-
-      //ScrollView contains a main View component.
+      />   
       <ScrollView>
         <View
+        //ScrollView contains a main View component.
           style={{
             width: '100%',
             backgroundColor: COLOURS.backgroundLight,
@@ -186,12 +184,11 @@ const ProductInfo = ({route, navigation}) => {
               />
             </TouchableOpacity>
           </View>
-
+          <FlatList
           //FlatList is used to scroll product images horizontally.
           //Below the pictures is an animated indicator bar that shows the dots of the pictures.
           //Product information texts and other components are added.
           //At the bottom of the page is a button to add the product to the cart
-          <FlatList
             data={product.productImageList ? product.productImageList : null}
             horizontal
             renderItem={renderProduct}
@@ -205,6 +202,10 @@ const ProductInfo = ({route, navigation}) => {
             )}
           />
           <View
+          /*
+              First, the <View> component is defined as a main view component with a width and height of '100%'. 
+              Next, a <ScrollView> component is added, enabling vertical scrolling and allowing other content to scroll across the screen.
+          */
             style={{
               width: '100%',
               flexDirection: 'row',
@@ -214,7 +215,13 @@ const ProductInfo = ({route, navigation}) => {
               marginTop: 32,
             }}>
             {product.productImageList
-              ? product.productImageList.map((data, index) => {
+              ? product.productImageList.map((data, index) => {  
+                /*
+                Then some elements are added to provide a visual representation of the product. 
+                First, an <Animated.View> component is used to show product images. 
+                Here, the product.productImageList array is looped over and an <Animated.View> component is created for each image. 
+                This component uses the opacity value to provide an animated look. 
+                */
                   let opacity = position.interpolate({
                     inputRange: [index - 1, index, index + 1],
                     outputRange: [0.2, 1, 0.2],
@@ -237,6 +244,11 @@ const ProductInfo = ({route, navigation}) => {
           </View>
         </View>
         <View
+        /*
+        Next, text elements are added that contain the product's name, description, and other information. 
+        The product name is contained within the <Text> component and is styled with a specific style and a limited width. 
+        The legend is represented by another <Text> component and formatted with a smaller size and a lower opacity value.
+        */
           style={{
             paddingHorizontal: 16,
             marginTop: 6,
@@ -406,6 +418,7 @@ const ProductInfo = ({route, navigation}) => {
     </View>
   );
 };
+//The design created by bringing all these components together provides a detailed view of a product and gives information about the product to the user.
 
 export default ProductInfo;
 //The ProductInfo component is returned.
